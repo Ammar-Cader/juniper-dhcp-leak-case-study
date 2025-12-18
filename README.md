@@ -19,8 +19,34 @@ After receiving the Videoloft Cloud Adapter is when we discovered this “DHCP L
 
 -We then thought simply to just change the Videoloft cloud adapter to a static IP in 192.168.0.x range, but for our bad luck the specific model we had of the cloud adapter doesn’t support assigning a static IP.
 -Then applied DHCP to the ex2200 switch but then had a full wireless network outage but didn’t cause much damage because operation team machines are connected via ethernet as well to the other switches. After doing so the video loft adapter still continued to receive an IP from the access point (192.168.10.x) instead of the DHCP from switch (192.168.0.x)
+
 -Also considered using CCTV manager app from symbology with our NAS but then other operations will have to do so as well which is convenient since they all have video loft cloud adapter configured
 
 ## Solution:
 -Then we came up with the solution of using another switch for this purpose and best practices. Access points, NAS(functions as AD and DNS) remain in the same switch and the CCTV with NVR in the new juniper switch.
+
 -With the same configs as the previous juniper switch, no dhcp since and an another router acting as DHCP router connecting to the uplink so devices have internet access.
+
+## Advantages:
+-In the previous architecture devices connected to access points(192.168.10.x) were able to access the NVR and CCTVs(192.168.0.x), but after our solution this threat was eliminated.
+
+-Videoloft gets convenient IP because separate router which give IP’s as desired 192.168.0.x
+
+## What I Learned:
+-JunOS commands and configurations(basic) when applying configs by refereeing to the running switch
+
+-DHCP behavior in mixed vendor networks
+
+-Why switches should not fight routers for DHCP
+
+-Importance of design over quick fixes
+
+## Closing Insights:
+-Real networking issues aren’t solved by one command
+
+-Understanding traffic flow matters more than tools
+
+## Conclusion:
+This was a great hands on learning experience with Juniper and real world networking behavior. Troubleshooting this issue helped me better understand DHCP behavior, switch isolation, and why clean network design matters especially when security and reliability are involved.
+
+#Networking #Juniper #JunOS #DHCP #NetworkEngineering #CyberSecurity #CCTV #EnterpriseNetworking #ITInfrastructure #Troubleshooting #LearningByDoing
